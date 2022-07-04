@@ -1,6 +1,7 @@
 package com.main.store.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,8 +9,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.main.store.ApiUtilites.BaseApiService;
@@ -20,6 +24,7 @@ import com.main.store.adapter.MenAdapter;
 import com.main.store.models.ProductsResponse;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MenActivity extends AppCompatActivity {
 
@@ -28,13 +33,27 @@ public class MenActivity extends AppCompatActivity {
     MenAdapter adapter;
     ProgressDialog progressDialog;
 
+    Toolbar toolbar;
+    TextView txttoolbar;
+
     List<ProductsResponse> listData;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_men);
 
         recyclerView = findViewById(R.id.electro_recycler);
+        toolbar = findViewById(R.id.toolbar);
+        txttoolbar = findViewById(R.id.txttoolbar);
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle((" "));
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        //For changing the color of a back button...................................................
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        txttoolbar.setText("Men's Clothing");
 
         mApiService = UtilsApi.getOthersAPIService();
 
@@ -74,5 +93,13 @@ public class MenActivity extends AppCompatActivity {
         progressDialog.setMessage(title + "" + message);
         progressDialog.setCancelable(false);
         progressDialog.show();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

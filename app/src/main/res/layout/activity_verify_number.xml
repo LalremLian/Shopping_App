@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0F0F0"
     tools:context=".activities.VerifyNumberActivity">
 
     <LinearLayout
@@ -17,6 +18,7 @@
             android:layout_height="90dp"
             android:src="@drawable/profile"/>
         <TextView
+            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enter your mobile number"
@@ -26,13 +28,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="We will send you a verification code"
-            android:textSize="18sp" />
-        <EditText
-            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:layout_marginBottom="15dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            android:layout_margin="8dp"
             android:layout_height="wrap_content"
-            android:textColorHint="017"
-            android:textSize="20sp"
-            android:layout_margin="8dp"/>
+            android:layout_width="match_parent">
+            <EditText
+                android:id="@+id/ed_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:focusableInTouchMode="true"
+                android:hint="O1747 389 590"
+               />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -42,6 +56,7 @@
         android:orientation="vertical"
         android:gravity="center">
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_continue"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="#009688"
@@ -56,16 +71,17 @@
                 android:textSize="20sp"/>
         </androidx.cardview.widget.CardView>
         <TextView
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="By clicking on 'Continue' you are agreeing to our"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="terms of use"
-            android:textSize="14sp"
-            android:layout_marginBottom="15dp"
-            android:textColor="@color/black"/>
+            android:textSize="12sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/purple_700"/>
     </LinearLayout>
 </RelativeLayout>

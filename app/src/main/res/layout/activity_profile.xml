@@ -4,8 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0F0F0"
     android:orientation="vertical"
     tools:context=".activities.ProfileActivity">
+
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
 
     <androidx.cardview.widget.CardView
         android:layout_margin="5dp"
@@ -32,7 +39,7 @@
                         android:layout_width="150dp"
                         android:scaleType="centerCrop"
                         android:layout_height="150dp"
-                        android:background="#63938F8F"/>
+                        android:src="@drawable/profile"/>
                 </androidx.cardview.widget.CardView>
 
                 <ImageView
@@ -62,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/name"
-                    android:text="John Brinme"
+                    android:text="John Carter"
                     android:textSize="20dp" />
             </RelativeLayout>
             <RelativeLayout
@@ -82,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/email"
-                    android:text="brime@gmail.com"
+                    android:text="carter_34@gmail.com"
                     android:textSize="20dp" />
             </RelativeLayout>
             <RelativeLayout
@@ -102,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/phone"
-                    android:text="+91 93664 39212"
+                    android:text=" +91 93664 39212"
                     android:textSize="20dp" />
             </RelativeLayout>
         </LinearLayout>

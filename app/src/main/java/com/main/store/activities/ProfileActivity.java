@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,9 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
+import androidx.appcompat.widget.Toolbar;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,14 +41,19 @@ import retrofit2.Response;
 public class ProfileActivity extends AppCompatActivity {
 
     ImageView circleImageView;
+    ImageView imgCart;
 
     TextView name;
+    TextView txttoolbar;
     TextView email, phone;
-
     ImageView imageView;
+
+    Toolbar toolbar;
+
     List<UserResponse> listData;
 
     Integer REQUEST_CAMERA = 1, SELECT_FILE = 0;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +65,19 @@ public class ProfileActivity extends AppCompatActivity {
         email = findViewById(R.id.tv_email);
         phone = findViewById(R.id.tv_phone);
         imageView = findViewById(R.id.img_pick);
+        toolbar = findViewById(R.id.toolbar);
+        txttoolbar = findViewById(R.id.txttoolbar);
+        imgCart = findViewById(R.id.img_cart);
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle((" "));
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        //For changing the color of a back button...................................................
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        txttoolbar.setText("Profile");
+
+        imgCart.setOnClickListener(v -> Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show());
 
         getUserData();
     }
@@ -105,5 +126,13 @@ public class ProfileActivity extends AppCompatActivity {
                 circleImageView.setImageURI(selectedImageUri);
             }
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

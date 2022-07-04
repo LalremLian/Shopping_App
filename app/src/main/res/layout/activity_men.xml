@@ -8,6 +8,12 @@
     android:background="#F0F0F0"
     tools:context=".activities.MenActivity">
 
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/electro_recycler"
         android:layout_width="match_parent"

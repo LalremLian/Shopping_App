@@ -14,7 +14,10 @@
         android:theme="@style/Theme.Store"
         tools:targetApi="31">
         <activity
-            android:name=".VerifyNumberActivity"
+            android:name=".activities.WelcomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.VerifyNumberActivity"
             android:exported="false" />
         <activity
             android:name=".activities.CompleteActivity"
@@ -64,11 +67,11 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ManifestOrder,ScopedStorage" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

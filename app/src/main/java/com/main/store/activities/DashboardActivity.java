@@ -33,12 +33,16 @@ public class DashboardActivity extends AppCompatActivity {
 
     //ActivityDashboardBinding binding;
 
+    CardView cardProfilePic;
+
     RecyclerAdapter adapter;
 
     TextView tvElectromic;
     TextView tvJewelery;
     TextView tvMen;
     TextView tvWomen;
+    TextView tvCategoryAll;
+    TextView tvBestSellingAll;
 
     CardView cardElectronics,
             cardJewelery,
@@ -76,14 +80,16 @@ public class DashboardActivity extends AppCompatActivity {
         tvMen = findViewById(R.id.tv_men);
         tvWomen = findViewById(R.id.tv_women);
         tvElectronics = findViewById(R.id.tv_electronics);
+        tvCategoryAll = findViewById(R.id.tv_category_all);
+        tvBestSellingAll = findViewById(R.id.tv_best_selling_all);
 
         cardElectronics = findViewById(R.id.card_electronics);
         cardJewelery = findViewById(R.id.card_jewelery);
         cardMen = findViewById(R.id.card_men);
         cardWomen = findViewById(R.id.card_women);
+        cardProfilePic = findViewById(R.id.pic_id);
 
         mApiServise = UtilsApi.getOthersAPIService();
-
 
         getProducstList();
 
@@ -109,6 +115,11 @@ public class DashboardActivity extends AppCompatActivity {
         cardWomen.setOnClickListener(v ->
         {
             Intent intent = new Intent(DashboardActivity.this, WomenActivity.class);
+            startActivity(intent);
+        });
+        cardProfilePic.setOnClickListener(v ->
+        {
+            Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
             startActivity(intent);
         });
     }

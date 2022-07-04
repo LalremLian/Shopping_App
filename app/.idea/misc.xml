@@ -14,16 +14,19 @@
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/drawable/ic_location.xml" value="0.1415" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout-v26/activity_details.xml" value="0.225" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_carts.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_complete.xml" value="0.225" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_details.xml" value="0.225" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_electronics.xml" value="0.225" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_jewelery.xml" value="0.225" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_main.xml" value="0.225" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_men.xml" value="0.225" />
-        <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_profile.xml" value="0.225" />
+        <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_verify_number.xml" value="0.225" />
+        <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_welcome.xml" value="0.225" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/activity_women.xml" value="0.225" />
         <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/item_list.xml" value="0.225" />
+        <entry key="..\:/Users/MSHL3/AndroidStudioProjects/Shopping_App/app/src/main/res/layout/toolbar.xml" value="0.225" />
       </map>
     </option>
   </component>

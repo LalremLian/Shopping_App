@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/D:/sdk/icons/material/materialicons/arrow_forward_ios/baseline_arrow_forward_ios_24.xml" />
+                                      <entry key="url" value="file:/D:/sdk/icons/material/materialicons/stars/baseline_stars_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="018786" />
-                            <entry key="outputName" value="ic_arrow_forward" />
+                            <entry key="color" value="44a75b" />
+                            <entry key="outputName" value="ic_stars" />
                             <entry key="sourceFile" value="C:\Users\MSHL3\AndroidStudioProjects\Shopping_App\app" />
                           </map>
                         </option>
