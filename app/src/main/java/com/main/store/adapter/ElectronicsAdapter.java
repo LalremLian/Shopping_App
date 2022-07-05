@@ -16,6 +16,7 @@ import com.main.store.models.ProductsResponse;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -49,6 +50,19 @@ public class ElectronicsAdapter extends RecyclerView.Adapter<ElectronicsAdapter.
                 .resize(255,255)
                 .centerCrop()
                 .into(holder.imageView);
+        AtomicBoolean check = new AtomicBoolean(true);
+        holder.imgLove.setOnClickListener(v ->
+        {
+            if (check.get())
+            {
+                holder.imgLove.setImageResource(R.drawable.ic_love);
+                check.set(false);
+            }else
+            {
+                holder.imgLove.setImageResource(R.drawable.ic_love_outline);
+                check.set(true);
+            }
+        });
         holder.cardview_layout.setOnClickListener(v ->
         {
             Intent intent = new Intent(context, DetailsActivity.class);
@@ -84,12 +98,14 @@ public class ElectronicsAdapter extends RecyclerView.Adapter<ElectronicsAdapter.
         TextView tvTitle;
         TextView tvPrice;
         CardView cardview_layout;
+        ImageView imgLove;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.id_image);
             tvTitle = itemView.findViewById(R.id.tv_title);
             tvPrice = itemView.findViewById(R.id.tv_price);
             cardview_layout = itemView.findViewById(R.id.cardview_layout);
+            imgLove = itemView.findViewById(R.id.img_love);
         }
     }
 }

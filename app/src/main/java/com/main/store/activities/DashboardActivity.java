@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,6 +19,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,17 +39,13 @@ public class DashboardActivity extends AppCompatActivity {
 
     RecyclerAdapter adapter;
 
-    TextView tvElectromic;
-    TextView tvJewelery;
-    TextView tvMen;
-    TextView tvWomen;
     TextView tvCategoryAll;
     TextView tvBestSellingAll;
 
-    CardView cardElectronics,
-            cardJewelery,
-            cardMen,
-            cardWomen;
+    CircleImageView imgElectronic,
+            imgJewelery,
+            imgdMen,
+            imgWomen;
 
     TextView tvElectronics;
 
@@ -57,11 +55,6 @@ public class DashboardActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ProgressDialog progressDialog;
-
-    Integer electroCount = 0,
-            jeweleryCount = 0,
-            menCount = 0,
-            womenCount = 0;
 
     @SuppressLint("CutPasteId")
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -75,19 +68,15 @@ public class DashboardActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         recyclerView = findViewById(R.id.id_recyclerview);
-        tvElectromic = findViewById(R.id.tv_electronics);
-        tvJewelery = findViewById(R.id.tv_jewelery);
-        tvMen = findViewById(R.id.tv_men);
-        tvWomen = findViewById(R.id.tv_women);
-        tvElectronics = findViewById(R.id.tv_electronics);
         tvCategoryAll = findViewById(R.id.tv_category_all);
         tvBestSellingAll = findViewById(R.id.tv_best_selling_all);
 
-        cardElectronics = findViewById(R.id.card_electronics);
-        cardJewelery = findViewById(R.id.card_jewelery);
-        cardMen = findViewById(R.id.card_men);
-        cardWomen = findViewById(R.id.card_women);
         cardProfilePic = findViewById(R.id.pic_id);
+
+        imgElectronic = findViewById(R.id.img_electronic);
+        imgJewelery = findViewById(R.id.img_jewelery);
+        imgdMen = findViewById(R.id.img_men);
+        imgWomen = findViewById(R.id.img_women);
 
         mApiServise = UtilsApi.getOthersAPIService();
 
@@ -97,22 +86,22 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        cardElectronics.setOnClickListener(v ->
+        imgElectronic.setOnClickListener(v ->
         {
             Intent intent = new Intent(DashboardActivity.this, ElectronicsActivity.class);
             startActivity(intent);
         });
-        cardJewelery.setOnClickListener(v ->
+        imgJewelery.setOnClickListener(v ->
         {
             Intent intent = new Intent(DashboardActivity.this, JeweleryActivity.class);
             startActivity(intent);
         });
-        cardMen.setOnClickListener(v ->
+        imgdMen.setOnClickListener(v ->
         {
             Intent intent = new Intent(DashboardActivity.this, MenActivity.class);
             startActivity(intent);
         });
-        cardWomen.setOnClickListener(v ->
+        imgWomen.setOnClickListener(v ->
         {
             Intent intent = new Intent(DashboardActivity.this, WomenActivity.class);
             startActivity(intent);
@@ -148,11 +137,12 @@ public class DashboardActivity extends AppCompatActivity {
                         adapter = new RecyclerAdapter(listData, DashboardActivity.this);
                         recyclerView.setHasFixedSize(true);
 //                        recyclerView.setLayoutManager(new LinearLayoutManager(DashboardActivity.this));
-                        GridLayoutManager layoutManager=new GridLayoutManager(DashboardActivity.this,2);
+                        GridLayoutManager layoutManager = new GridLayoutManager(DashboardActivity.this, 2);
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setAdapter(adapter);
 
-                        for (int i = 0; i < listData.size(); i++) {
+                        //This section is for showing the items available in a particular category.............................
+/*                        for (int i = 0; i < listData.size(); i++) {
                             if (listData.get(i).getCategory().equalsIgnoreCase("electronics"))
                             {
                                 electroCount = electroCount + 1;
@@ -167,7 +157,7 @@ public class DashboardActivity extends AppCompatActivity {
                         tvElectronics.setText(String.valueOf(electroCount));
                         tvJewelery.setText(String.valueOf(jeweleryCount));
                         tvMen.setText(String.valueOf(menCount));
-                        tvWomen.setText(String.valueOf(womenCount));
+                        tvWomen.setText(String.valueOf(womenCount));*/
                     }
 
                     @Override

@@ -4,15 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +24,10 @@ import com.main.store.ApiUtilites.BaseApiService;
 import com.main.store.ApiUtilites.UtilsApi;
 import com.main.store.R;
 import com.main.store.adapter.AllProductsAdapter;
-import com.main.store.adapter.RecyclerAdapter;
 import com.main.store.models.ProductsResponse;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AllProductsActivity extends AppCompatActivity {
 
@@ -36,6 +39,11 @@ public class AllProductsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ProgressDialog progressDialog;
+
+    Toolbar toolbar;
+    TextView txttoolbar;
+
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,16 @@ public class AllProductsActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         recyclerView = findViewById(R.id.all_product_recycler);
+        toolbar = findViewById(R.id.toolbar);
+        txttoolbar = findViewById(R.id.txttoolbar);
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle((" "));
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        //For changing the color of a back button...................................................
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        txttoolbar.setText("All Products");
 
         mApiServise = UtilsApi.getOthersAPIService();
 
@@ -83,5 +101,13 @@ public class AllProductsActivity extends AppCompatActivity {
         progressDialog.setMessage(title + "" + message);
         progressDialog.setCancelable(false);
         progressDialog.show();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

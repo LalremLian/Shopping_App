@@ -14,8 +14,8 @@ import com.main.store.activities.DetailsActivity;
 import com.main.store.models.ProductsResponse;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -41,15 +41,34 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        AtomicBoolean check = new AtomicBoolean(true);
         ProductsResponse productsResponse = listData.get(position);
+
+        String str = productsResponse.getCategory();
+        String output = str.substring(0, 1).toUpperCase() + str.substring(1);
+
         holder.tvTitle.setText(productsResponse.getTitle());
         holder.tvPrice.setText(productsResponse.getPrice());
+        holder.tvCategory.setText(output);
 
         Picasso.get()
                 .load(productsResponse.getImage())
                 .resize(255,255)
                 .centerCrop()
                 .into(holder.imageView);
+
+        holder.imgLove.setOnClickListener(v ->
+        {
+            if (check.get())
+            {
+                holder.imgLove.setImageResource(R.drawable.ic_love);
+                check.set(false);
+            }else
+            {
+                holder.imgLove.setImageResource(R.drawable.ic_love_outline);
+                check.set(true);
+            }
+        });
 
         holder.cardview_layout.setOnClickListener(v ->
         {
@@ -83,15 +102,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageView;
+        ImageView imgLove;
         TextView tvTitle;
         TextView tvPrice;
+        TextView tvCategory;
         CardView cardview_layout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.id_image);
+            imgLove = itemView.findViewById(R.id.img_love);
             tvTitle = itemView.findViewById(R.id.tv_title);
             tvPrice = itemView.findViewById(R.id.tv_price);
+            tvCategory = itemView.findViewById(R.id.tv_category);
+            tvCategory = itemView.findViewById(R.id.tv_category);
             cardview_layout = itemView.findViewById(R.id.cardview_layout);
         }
     }
