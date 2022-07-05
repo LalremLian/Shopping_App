@@ -32,7 +32,7 @@
             android:layout_marginBottom="15dp"/>
         <com.google.android.material.textfield.TextInputLayout
             app:counterEnabled="true"
-            app:counterMaxLength="10"
+            app:counterMaxLength="12"
             android:layout_margin="8dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
@@ -43,7 +43,9 @@
                 android:textSize="20sp"
                 android:gravity="center"
                 android:focusableInTouchMode="true"
-                android:hint="O1747 389 590"
+                android:hint="Phone Number"
+                android:inputType="numberDecimal"
+                android:textStyle="bold"
                />
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -122,6 +122,16 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
             startActivity(intent);
         });
+        tvCategoryAll.setOnClickListener(v ->
+        {
+            Intent intent = new Intent(DashboardActivity.this, AllProductsActivity.class);
+            startActivity(intent);
+        });
+        tvBestSellingAll.setOnClickListener(v ->
+        {
+            Intent intent = new Intent(DashboardActivity.this, AllProductsActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void getProducstList() {

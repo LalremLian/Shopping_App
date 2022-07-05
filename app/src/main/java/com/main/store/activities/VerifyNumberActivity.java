@@ -20,6 +20,7 @@ public class VerifyNumberActivity extends AppCompatActivity {
         {
             Intent intent = new Intent(VerifyNumberActivity.this, DashboardActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 }

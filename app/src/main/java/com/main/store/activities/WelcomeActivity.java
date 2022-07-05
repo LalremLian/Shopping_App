@@ -22,6 +22,7 @@ public class WelcomeActivity extends AppCompatActivity {
         {
             Intent intent = new Intent(WelcomeActivity.this, VerifyNumberActivity.class);
             startActivity(intent);
+            finish();
         });
     }
     @Override

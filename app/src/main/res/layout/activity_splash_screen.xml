@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#97EF6464"
+    android:background="#F0F0F0"
     tools:context=".activities.SplashScreenActivity">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -15,5 +15,5 @@
         app:lottie_url="REPLACE_JSON_URL"
         app:lottie_rawRes="@raw/shop"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
+        app:lottie_loop="false"/>
 </LinearLayout>

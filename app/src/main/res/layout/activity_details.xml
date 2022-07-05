@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4E061E"
     tools:context=".activities.DetailsActivity">
 
     <ScrollView
@@ -15,23 +16,95 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <ImageView
-                android:id="@+id/img_details"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="#D8D5D5"/>
-            <TextView
-                android:id="@+id/tv_details_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:text="19.9"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_height="300dp">
+                <ImageView
+                    android:id="@+id/img_details"
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_height="300dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp">
+
+                <TextView
+                    android:id="@+id/tv_details_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:singleLine="true"
+                    android:text="19.9"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_details_price_strike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_details_price"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:singleLine="true"
+                    android:text="19.9"
+                    android:textColor="#65FFFFFF"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_details_percentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_details_price"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toRightOf="@+id/tv_details_price_strike"
+                    android:singleLine="true"
+                    android:text="-19%"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/id_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="8dp"
+                    android:text="10% Cashback with prepayment"
+                    android:textColor="#6EE6F6"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/id_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/id_1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:singleLine="true"
+                    android:textColor="#6EE6F6"
+                    android:text="&amp; Collectable Vouchers"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/id_2"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:singleLine="true"
+                    android:textColor="#6EE6F6"
+                    android:text="*T&amp;C Apply"
+                    android:textSize="6sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -55,41 +128,67 @@
                         android:text="Classic hero"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:id="@+id/id_voucher"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_below="@+id/tv_details_title">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_voucher"
+                            android:textColor="#F44B21"
+                            android:text=" Up to 5% off" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:drawableRight="@drawable/ic_arrow_right_orange"
+                            android:textColor="#F44B21"
+                            android:text="5 Vouchers " />
+                    </RelativeLayout>
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:layout_below="@id/tv_details_title"
+                        android:layout_below="@id/id_voucher"
                         android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/tv_details_category"
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="5dp"
-                            android:textColor="#F44B21"
-                            android:background="#3CF44B21"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:text="Category"
-                            android:layout_below="@id/tv_details_title"
-                            android:singleLine="true"/>
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/card_buy"
-                            android:layout_width="85dp"
-                            android:layout_height="35dp"
-                            app:cardCornerRadius="5dp"
-                            android:backgroundTint="#DD4E43"
-                            android:layout_marginLeft="243dp">
+                            android:layout_below="@id/id_voucher"
+                            android:background="#16F44B21">
                             <TextView
+                                android:id="@+id/tv_details_category"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Buy"
+                                android:padding="5dp"
+                                android:textColor="#F44B21"
+                                android:textSize="18sp"
                                 android:textStyle="bold"
-                                android:layout_gravity="center"
-                                android:textColor="@color/white"/>
-                        </androidx.cardview.widget.CardView>
+                                android:text="Category"
+                                android:singleLine="true"/>
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_buy"
+                                android:layout_width="85dp"
+                                android:layout_height="35dp"
+                                app:cardCornerRadius="5dp"
+                                android:layout_alignParentEnd="true"
+                                android:backgroundTint="#DD4E43">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Buy"
+                                    android:textStyle="bold"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/white"/>
+                            </androidx.cardview.widget.CardView>
+                        </RelativeLayout>
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>

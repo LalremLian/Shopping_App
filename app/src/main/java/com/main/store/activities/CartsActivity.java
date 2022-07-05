@@ -1,12 +1,17 @@
 package com.main.store.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +22,7 @@ import com.squareup.picasso.Picasso;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Objects;
 
 public class CartsActivity extends AppCompatActivity {
 
@@ -38,15 +44,20 @@ public class CartsActivity extends AppCompatActivity {
 
     CardView cardView;
 
+    Toolbar toolbar;
+    TextView txttoolbar;
+
     Integer amount = 1;
     Double aDouble;
     Double aBDouble;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carts);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//  set status text dark
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         tv_title = findViewById(R.id.tv_title);
@@ -58,6 +69,17 @@ public class CartsActivity extends AppCompatActivity {
         cardView = findViewById(R.id.card_checkout);
         count = findViewById(R.id.count);
 
+        toolbar = findViewById(R.id.toolbar);
+        txttoolbar = findViewById(R.id.txttoolbar);
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle((" "));
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        //For changing the color of a back button...................................................
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        txttoolbar.setText("Electronics");
+
         mApiService = UtilsApi.getOthersAPIService();
 
         getData();
@@ -67,7 +89,7 @@ public class CartsActivity extends AppCompatActivity {
             amount = amount + 1;
             aDouble = round((aDouble + aBDouble),2);
             tv_price.setText("৳ " + aDouble);
-            tv_total.setText("Total : " + "৳ "+ aDouble);
+            tv_total.setText("৳ "+ aDouble);
             count.setText(amount.toString());
         });
         tv_minus.setOnClickListener(v ->
@@ -75,13 +97,14 @@ public class CartsActivity extends AppCompatActivity {
             amount = amount - 1;
             aDouble = round((aDouble - aBDouble),2);
             tv_price.setText("৳ " + aDouble);
-            tv_total.setText("Total : " + "৳ "+ aDouble);
+            tv_total.setText("৳ "+ aDouble);
             count.setText(amount.toString());
         });
         cardView.setOnClickListener(v ->
         {
             Intent intent = new Intent(CartsActivity.this,CompleteActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 
@@ -99,7 +122,7 @@ public class CartsActivity extends AppCompatActivity {
 
         tv_title.setText(stTitle);
         tv_price.setText("৳ " + aDouble);
-        tv_total.setText("Total : " + "৳ "+ aDouble);
+        tv_total.setText("৳ "+ aDouble);
         count.setText(amount.toString());
 
         Picasso.get()
@@ -114,5 +137,13 @@ public class CartsActivity extends AppCompatActivity {
         BigDecimal bd = BigDecimal.valueOf(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

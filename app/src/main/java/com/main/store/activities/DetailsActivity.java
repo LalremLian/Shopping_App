@@ -1,11 +1,14 @@
 package com.main.store.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,6 +23,8 @@ import com.main.store.utilities.CommonFunction;
 import com.main.store.utilities.CommonKeys;
 import com.squareup.picasso.Picasso;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
@@ -36,18 +41,25 @@ public class DetailsActivity extends AppCompatActivity implements BottomNavigati
     TextView tv_price;
     TextView tv_category;
     TextView tv_description;
+    TextView tv_price_strike;
 
     ImageView img_product;
     CardView cardView;
     BottomNavigationView bottomNavigationView;
 
+    double price;
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//  set status text dark
+
 
         tv_title = findViewById(R.id.tv_details_title);
         tv_price = findViewById(R.id.tv_details_price);
+        tv_price_strike = findViewById(R.id.tv_details_price_strike);
         tv_category = findViewById(R.id.tv_details_category);
         tv_description = findViewById(R.id.tv_description);
         img_product = findViewById(R.id.img_details);
@@ -67,6 +79,8 @@ public class DetailsActivity extends AppCompatActivity implements BottomNavigati
         stImage = bundle.getString("IMAGE");
 
         Log.e("TAGGGG", stTitle);
+
+        tv_price_strike.setPaintFlags(tv_price_strike.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         CharacterIterator it = new StringCharacterIterator(stDescription);
         for(char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
@@ -101,8 +115,13 @@ public class DetailsActivity extends AppCompatActivity implements BottomNavigati
 
     @SuppressLint("SetTextI18n")
     private void setData() {
+
+        price = Double.parseDouble(stPrice);
+
+        price = round(price + 20,2);
         tv_title.setText(stTitle);
         tv_price.setText("৳ "+stPrice);
+        tv_price_strike.setText("৳ "+ price);
         tv_category.setText(stCategory);
         tv_description.setText(stDescription);
 
@@ -131,5 +150,12 @@ public class DetailsActivity extends AppCompatActivity implements BottomNavigati
                 return true;
         }
         return false;
+    }
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }
