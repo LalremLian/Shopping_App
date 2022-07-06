@@ -2,7 +2,7 @@
 Store is an Android app that allows users to create an account and shop(Online Shopping App). This app will allow user to but any product(Fake Products) from it.
 
 ### Technology used
-- Basic Fake Store API (disease.sh)
+- Basic Fake Store API (fakestoreapi.com")
 - Used Third-Party Libraries
 - Android Studio
 - Java as a Main Programming Language
